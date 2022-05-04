@@ -1,0 +1,9 @@
+CONFIGS:
+  MODEL_PATH: 'models/dresunet.onnx'
+  PYTORCH_MODEL_PATH: 'models/model1.pt'
+  IMG_SIZE: 512
+  DEVICE: 'cpu'
+  UPLOAD_FOLDER: 'images'
+  MASK_THRESHOLD: 0.5
+  PRED_THRESHOLD: 0.5
+  MIN_AREA: 2500
