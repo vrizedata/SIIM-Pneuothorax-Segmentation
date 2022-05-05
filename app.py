@@ -20,9 +20,9 @@ def input_gen(image_file):
     """
     makes data in proper input format
     """
-    print("image type - ",type(image_file))
-    print("image  below ")
-    print(image_file)
+#     print("image type - ",type(image_file))
+#     print("image  below ")
+#     print(image_file)
     # image = cv2.imread(image_name)
     # img_str = image_name
     # #nparr = np.fromstring(img_str, np.uint8)
@@ -39,7 +39,7 @@ def input_gen(image_file):
     opencv_image = cv2.imdecode(file_bytes, 1)
 
     image = cv2.cvtColor(opencv_image, cv2.COLOR_BGR2RGB)
-    print(type(image))
+    #print(type(image))
     image = encode_img(image)
     data = {
     "image" : image     
@@ -107,12 +107,12 @@ def predict_img(data):
             out = transform(image=image)
             image = out["image"]
             mask,prob = get_prediction(image)
-            print("result: ------------")
+            #print("result: ------------")
             #print(type(mask))
             mask,prob = sigmoid(mask[0][0]),sigmoid(prob[0][0])
             mask = post_process_mask(mask,prob,mask_thresh=mask_thresh,min_area=min_area,pred_thres=pred_thresh)
             mask = encode_img(mask)
-            print(type(mask))
+            #print(type(mask))
             data = {
                 "image": mask,
                 "probability": str(prob)
@@ -131,15 +131,15 @@ if uploaded_image is not None:
         
         data = input_gen(uploaded_image)
         #print(data)
-        print("------------------")
-        print(type(data))
-        print("-----------")
+#         print("------------------")
+#         print(type(data))
+#         print("-----------")
         #print(type(image_file))
         #print(image_file)
         res = predict_img(data)
         output = output_gen(res)
-        print("**********************")
-        print(type(output))
+#         print("**********************")
+#         print(type(output))
         #image_out = Image.fromarray(output)
         image_file_path = "data/output_image.png"
         #image_out.save(image_file_path)
